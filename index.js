@@ -20,7 +20,7 @@ var server = http.createServer(app);
 // app.get('/', (_req, _res) => {
 //   _res.send('hello heroku!');
 // });
-app.use('/', express.static('https://go2hellcorona.herokuapp.com' + '/index.html'));
+app.use('/', express.static('./index.html'));
 app.listen('port', () => {
   console.log('app listen function');
 });
