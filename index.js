@@ -17,8 +17,10 @@ var server = http.createServer(app);
 //     res.sendFile(__dirname + '/index.html');
 // });
 
-
-app.use('/', express.static(__dirname + '/index.html'));
+// app.get('/', (_req, _res) => {
+//   _res.send('hello heroku!');
+// });
+app.use('/', express.static('https://go2hellcorona.herokuapp.com' + '/index.html'));
 app.listen('port', () => {
   console.log('app listen function');
 });
