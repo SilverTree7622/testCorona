@@ -18,7 +18,7 @@ var server = http.createServer(app);
 // });
 
 
-app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/index.html'));
 app.listen('port', () => {
   console.log('app listen function');
 });
