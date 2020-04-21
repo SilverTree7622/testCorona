@@ -12,7 +12,7 @@ var io = require('socket.io')(server, { origins: '*:*' });
 //     console.log('port:', port);
 // });
 
-app.get('/', function(req, res) {
+app.get('./index.html', function(req, res) {
     console.log('app get function');
     res.sendFile(__dirname + '/index.html');
   });
