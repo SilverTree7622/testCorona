@@ -1,10 +1,24 @@
 
 var express = require('express');
 var app = express();
-var http = require('http');
 var port = process.env.PORT || 3000; // 1
-var server = http.createServer(app);
+
+
+// var http = require('http');
+// var server = http.createServer(app);
 // var io = require('socket.io')(server, { origins: '*:*' });
+
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/js/main.js');
+  res.sendFile(__dirname + '/css/main.css');
+  res.sendFile(__dirname + '/favicon.ico');
+  res.sendFile(__dirname + '/index.html');
+});
+app.listen(port, () => {
+  console.log('__dirname:', __dirname);
+  console.log('Example app listening at http://localhost:' + port)
+});
 
 
 // server.listen(port);
@@ -20,10 +34,10 @@ var server = http.createServer(app);
 // app.get('/', (_req, _res) => {
 //   _res.send('hello heroku!');
 // });
-app.use('/', express.static('./index.html'));
-app.listen('port', () => {
-  console.log('app listen function');
-});
+
+// app.listen('port', () => {
+//   console.log('app listen function');
+// });
 
 // // connection event handler
 // // connection이 수립되면 event handler function의 인자로 socket인 들어온다
