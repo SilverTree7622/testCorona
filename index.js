@@ -17,19 +17,19 @@ var corsOption = {
 	// 	var tmpBool = whiteList.indexOf(_origin) !== -1;
 	// 	_callback(null, tmpBool);
 	// },
-	credentials: true,
-	// optionsSuccessStatus: 200,
 	origin:	whiteList,
+	// origin:	'http://localhost:' + port,
+	credentials: true,
+	optionsSuccessStatus: 200,
 	// methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-	// allowedHeaders: ["Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"]
+	allowedHeaders: ["Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"]
 };
 
 // app.options('*', cors(corsOption)) // include before other routes
 
-app.use([
-	cors(corsOption),
-	express.static('client')
-]);
+
+app.use(cors(corsOption));
+app.use(express.static('client'));
 
 // set client relative path for the full service
 app.get('/', (req, res) => {
@@ -42,4 +42,4 @@ var server = app.listen(port, () => {
 	console.log('Example app listening at http://localhost:' + port);
 });
 
-server.keepAliveTimeout = 65000;
+console.log('server:', server);
