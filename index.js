@@ -9,16 +9,17 @@ var port = process.env.PORT || 3000;
 var whiteList = [
 	'https://www.mohw.go.kr/react/popup_200128.html',
 	'https://www.mohw.go.kr/react/popup_200128_3.html',
-	'https://www.mohw.go.kr/react/popup_200128_4.html'
+	'https://www.mohw.go.kr/react/popup_200128_4.html',
+	'https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByAddr/json'
 ];
 var corsOption = {
-	origin: function (_origin, _callback) {
-		var tmpBool = whiteList.indexOf(_origin) !== -1;
-		_callback(null, tmpBool);
-	},
+	// origin: function (_origin, _callback) {
+	// 	var tmpBool = whiteList.indexOf(_origin) !== -1;
+	// 	_callback(null, tmpBool);
+	// },
 	credentials: true,
-	optionsSuccessStatus: 200,
-	// origin:	whiteList,
+	// optionsSuccessStatus: 200,
+	origin:	whiteList,
 	// methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
 	// allowedHeaders: ["Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"]
 };
@@ -36,7 +37,9 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(port, () => {
+var server = app.listen(port, () => {
 	console.log('__dirname:', __dirname);
 	console.log('Example app listening at http://localhost:' + port);
 });
+
+server.keepAliveTimeout = 65000;
