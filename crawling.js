@@ -23,7 +23,7 @@ const _then = async (html) => {
 	if (html) {
 		const $ = await cheerio.load(html.data);
 		htmlList.push(html.data);
-		console.log('done');
+		console.log('crawling html list done');
 	}
 	else {
 		console.log('where the fuck is html?? :', html);

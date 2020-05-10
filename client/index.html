@@ -3,9 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name='referrer' content='no-referrer-when-downgrade'></meta>
+        <script data-ad-client="ca-pub-2649247683134200" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        
         <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' https://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
         <title>FCorona</title>
-        <script data-ad-client="ca-pub-2649247683134200" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=5196ce531b985d6ae701ff6b64879fe2&libraries=services"></script>
         <link rel="stylesheet" href="/main.css">
         <link rel="icon" href="./favicon.ico">
@@ -15,7 +16,8 @@
         <!-- init get socket io method -->
         <script src="/socket.io/socket.io.js"></script>
         <!-- serve server method -->
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
+            var tmpURLDataList = [];
             // change this URL to publish server URL
             var socketURL = 'http://localhost:3000/';
             var socket = io.connect(socketURL);
@@ -27,9 +29,10 @@
             // get html data method
             socket.on('listData', (data) => {
                 // now data is the html array list
-                console.log('listData might be this:', data);
+                tmpURLDataList = data;
+                console.log('tmpURLDataList:', tmpURLDataList);
             });
-        </script>
+        </script> -->
         <!-- SOCKET IO testing END-->
         <div id="app"></div>
         <script src="/main.js"></script>

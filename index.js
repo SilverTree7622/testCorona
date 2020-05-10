@@ -49,12 +49,14 @@ io.on('connection', (socket) => {
 
 	// send requested HTML list (hospital, center, drive info)
 	socket.on('list', () => {
+		// sending only once
+		console.log('socket: server => client the html data list');
 		socket.emit('listData', htmlList());
 	});
 
 	// when disconnect with server
 	socket.on('disconnect', () => {
-		console.log('a user disconnected');
+		console.log('socket: a user disconnected');
 	});
 });
 
