@@ -12,28 +12,9 @@
         <link rel="icon" href="./favicon.ico">
     </head>
     <body>
-        <!-- SOCKET IO testing -->
         <!-- init get socket io method -->
         <script src="/socket.io/socket.io.js"></script>
-        <!-- serve server method -->
-        <!-- <script type="text/javascript">
-            var tmpURLDataList = [];
-            // change this URL to publish server URL
-            var socketURL = 'http://localhost:3000/';
-            var socket = io.connect(socketURL);
-            // first init connection check
-            socket.on('initConnection', (data) => {
-                // send to server for asking 'list' method
-                socket.emit('list');
-            });
-            // get html data method
-            socket.on('listData', (data) => {
-                // now data is the html array list
-                tmpURLDataList = data;
-                console.log('tmpURLDataList:', tmpURLDataList);
-            });
-        </script> -->
-        <!-- SOCKET IO testing END-->
+        
         <div id="app"></div>
         <script src="/main.js"></script>
     </body>
