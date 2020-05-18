@@ -39,6 +39,18 @@ app.get('/', (req, res) => {
 	console.log('get function in server');
 	// __dirname => auto generated var (relative path)
 	res.sendFile(__dirname + '/index.html');
+
+	// add marker images
+	// center
+	res.sendFile(__dirname + '/assets/markers/center_marker.png');
+	// hospital
+	res.sendFile(__dirname + '/assets/markers/hospital_marker.png');
+	// mask
+	res.sendFile(__dirname + '/assets/markers/mask_marker_green.png');
+	res.sendFile(__dirname + '/assets/markers/mask_marker_red.png');
+	res.sendFile(__dirname + '/assets/markers/mask_marker_yellow.png');
+	// car drive
+	res.sendFile(__dirname + '/assets/markers/car_marker.png');
 });
 
 // socket io connection event (send this to client)
