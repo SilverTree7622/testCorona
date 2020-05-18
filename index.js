@@ -4,8 +4,10 @@ let htmlList = require('./crawling.js');
 
 var express = require('express');
 var app = express();
-var cors = require('cors');
+// var cors = require('cors');
+// var https = require('https').createServer(app);
 var http = require('http').createServer(app);
+// var io = require('socket.io')(https);
 var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 
@@ -31,12 +33,23 @@ var port = process.env.PORT || 3000;
 // // app.options('*', cors(corsOption)) // include before other routes
 
 
-// app.use(cors(corsOption));
+// set client static folder
 app.use(express.static('client'));
+
+// redirect http to https logic
+app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+		console.log('REDIRECT SYS: redirect to https');
+		res.redirect(`https://${req.header('host')}${req.url}`);
+	}
+    else {
+		console.log('REDIRECT SYS: it s already https keep going!');
+		next();
+	} 
+});
 
 // set client relative path for the full service (send static {html, css, js} file)
 app.get('/', (req, res) => {
-	console.log('get function in server');
 	// __dirname => auto generated var (relative path)
 	res.sendFile(__dirname + '/index.html');
 
