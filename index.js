@@ -38,6 +38,7 @@ app.use(express.static('client'));
 
 // redirect http to https logic
 app.use((req, res, next) => {
+	console.log('redirect system confirm');
     if (req.header('x-forwarded-proto') !== 'https') {
 		console.log('REDIRECT SYS: redirect to https');
 		res.redirect(`https://${req.header('host')}${req.url}`);
